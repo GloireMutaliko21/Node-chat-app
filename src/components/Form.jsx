@@ -13,6 +13,7 @@ const Form = ({ messages, setMessages }) => {
     const handlerClick = () => {
         newMessages.push(message);
         setMessages(newMessages);
+        setMessage('');
     };
 
     return (
