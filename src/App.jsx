@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Form from "./components/Form"
 import MessagesLayout from "./components/MessagesLayout"
 
 function App() {
   const [messages, setMessages] = useState([])
+
+
 
   return (
     <div className="flex flex-col justify-center items-center h-full w-full pt-10">

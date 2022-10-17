@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Form = ({ messages, setMessages }) => {
     const [message, setMessage] = useState('');
+    const [fecthdata, setFecthdata] = useState(true)
     const messageLength = message.length < 2;
 
     const handlerMessage = (e) => {
@@ -11,10 +12,26 @@ const Form = ({ messages, setMessages }) => {
     const newMessages = [...messages];
 
     const handlerClick = () => {
-        newMessages.push(message);
-        setMessages(newMessages);
+        // newMessages.push(message);
+        // setMessages(newMessages);
+        fetch('http://localhost:8001/', {
+            method: "POST",
+            body: JSON.stringify(message)
+        }).then(data => data.json())
+            .then(result => console.log(result))
+        setFecthdata(true);
         setMessage('');
     };
+
+    useEffect(() => {
+        if (fecthdata) {
+            const responseData = fetch('http://localhost:8001/').then(data => data.json())
+                .then(result => setMessages(Object.values(result)))
+            console.log(messages);
+            setFecthdata(false);
+        }
+        // console.log(responseData);
+    }, [messages, fecthdata])
 
     return (
         <div className='flex flex-col'>
