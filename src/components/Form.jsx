@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Form = ({ messages, setMessages }) => {
     const [message, setMessage] = useState('');
@@ -15,6 +15,13 @@ const Form = ({ messages, setMessages }) => {
         setMessages(newMessages);
         setMessage('');
     };
+
+    useEffect(() => {
+        const responseData = fetch('http://localhost:8000/').then(data => data.json())
+            .then(result => console.log(result))
+        // console.log(responseData);
+    }, [])
+
 
     return (
         <div className='flex flex-col'>
