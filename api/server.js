@@ -1,10 +1,10 @@
-import http from "http";
+const http = import('http')
+const server = http.createServer( function(req, res) {
 
-const server = http.createServer();
-
-server.on("request", (req, res) => {
-    res.write("Hey Gloire ! \n")
-    res.end("Bonjour Node-React!");
 });
 
-server.listen(8000);
+server.listen(3001);
+
+console.log("server is turning on on 3001")
+
+
