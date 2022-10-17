@@ -1,10 +1,14 @@
 import http from "http";
-
+import fs from "fs";
 const server = http.createServer();
-
 server.on("request", (req, res) => {
-    res.write("Hey Gloire ! \n")
-    res.end("Bonjour Node-React!");
+fs.readFile('message.txt', (err, data) => {
+        if (err) console.log("Echec");
+        return res.end(data);
+    })
 });
+server.listen(8001);
 
-server.listen(8000);
+
+
+
