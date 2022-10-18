@@ -35,15 +35,16 @@ const Form = ({ messages, setMessages }) => {
     }, [messages, fecthdata])
 
     return (
-        <div className='flex'>
-            <input
+        <div className='flex bottom-5 fixed'>
+            <textarea
                 placeholder='Votre message'
                 cols={60}
-                className='border rounded-full outline-none text-gray-600 p-2 mr-7'
+                rows={1}
+                className='border border-sky-600 rounded-full outline-none text-gray-600 p-2 mr-2'
                 value={message}
                 onChange={handlerMessage}
             >
-            </input>
+            </textarea>
             <button
                 type='button'
                 disabled={messageLength ? true : false}

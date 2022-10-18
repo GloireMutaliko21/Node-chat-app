@@ -3,7 +3,7 @@ import Message from './Message'
 
 const MessagesLayout = ({ messages }) => {
     return (
-        <div>
+        <div className=''>
             {messages.map((message, index) =>
                 <Message
                     key={index}
