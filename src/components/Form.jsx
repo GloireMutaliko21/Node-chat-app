@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { AiOutlineSend } from "react-icons/ai";
 
 const Form = ({ messages, setMessages }) => {
     const [message, setMessage] = useState('');
@@ -34,25 +35,23 @@ const Form = ({ messages, setMessages }) => {
     }, [messages, fecthdata])
 
     return (
-        <div className='flex flex-col'>
-            <textarea
+        <div className='flex'>
+            <input
                 placeholder='Votre message'
                 cols={60}
-                className='p-3 border rounded outline-none text-gray-600'
+                className='border rounded-full outline-none text-gray-600 p-2 mr-7'
                 value={message}
                 onChange={handlerMessage}
             >
-            </textarea>
-            <div className='flex justify-end my-5'>
-                <button
-                    type='button'
-                    disabled={messageLength ? true : false}
-                    onClick={handlerClick}
-                    className={`${!messageLength ? 'bg-sky-600' : 'bg-slate-300'} text-white px-4 py-2 rounded-md`}
-                >
-                    Envoyer
-                </button>
-            </div>
+            </input>
+            <button
+                type='button'
+                disabled={messageLength ? true : false}
+                onClick={handlerClick}
+                className={`${!messageLength ? 'bg-sky-600' : 'bg-slate-300'} text-white px-4 py-2 rounded-full`}
+            >
+                <AiOutlineSend className='text-xl' />
+            </button>
         </div>
     )
 }
